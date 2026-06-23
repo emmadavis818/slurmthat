@@ -1,4 +1,15 @@
 ## ADD CODE HERE!
+class job:
+
+    def __init__(self):
+        self.account = None
+        self.email = None
+        self.dir = None
+        self.job = None
+        
+
+
+
 
 def run_command_on_ARCC(job_directory, job_title, command, cpus = 1, 
 memory=32, fail_notification=True, finish_notification=False, time=8, conda="Modeling",
