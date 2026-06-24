@@ -19,7 +19,7 @@ class job:
       sh_filename = self.filename
 
       with open(sh_filename, 'w') as f:
-          f.write(f'#!/bin/bash\n')
+          f.write('#!/bin/bash\n')
           if self.account is not None:
             f.write(f'#SBATCH --account={self.account}\n')
           if self.email is not None:
@@ -65,6 +65,6 @@ class job:
     def run(self, conda=None):
       if conda is not None:
         with open(self.filename, 'a') as f:
-          f.write(f'source ~/.bashrc\n')
+          f.write('source ~/.bashrc\n')
           f.write(f'conda activate {conda}\n')
       os.system(f'sbatch {self.filename}')
