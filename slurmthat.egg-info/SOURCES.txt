@@ -1,0 +1,8 @@
+README.md
+pyproject.toml
+slurm.py
+slurmthat.egg-info/PKG-INFO
+slurmthat.egg-info/SOURCES.txt
+slurmthat.egg-info/dependency_links.txt
+slurmthat.egg-info/requires.txt
+slurmthat.egg-info/top_level.txt
