@@ -1,6 +1,24 @@
 import os
 
 class job:
+    '''Write
+      
+      Write a .sh file for slurm submission.
+        
+      Args:
+          fail(bool): Boolean. If True, sends email on job failure.
+          start(bool): Boolean. If True, sends email when job starts.
+          finish(bool): Boolean. If True, sends email when job finishes.
+          out_file(str): String. Name of the output file. 
+          err_file(str): String. Name of the error file. 
+          time(int): Integer. Time (in hours) requested for the job. Default is 32 hours.
+          cpus(int): Integer. Number of CPUs requested for the job. Default is 10.
+          nodes(int): Integer. Number of nodes requested for the job. Default is 1.
+          memory(int): Integer. Amount of memory (in GB) requested for the job. Default is 48 GB.
+      
+      Returns:
+          str: The name of the .sh file written.
+      '''
 
     def __init__(self, HPC=None, email=None, dir=None, job=None, partition=None,
                  account=None,shfilename=None):
