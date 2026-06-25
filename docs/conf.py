@@ -14,7 +14,7 @@ project = 'slurmthat'
 copyright = '2026, Emma Davis, Maurice Abraham, Alejandro Martinez, Taylor Juchau'
 author = 'Emma Davis, Maurice Abraham, Alejandro Martinez, Taylor Juchau'
 root_doc = 'index'
-release = '0.0.1'
+release = '0.0.5'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
