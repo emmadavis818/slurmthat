@@ -1,3 +1,7 @@
+import os
+import sys
+sys.path.insert(0, os.path.abspath('../slurmthat/'))
+
 # Configuration file for the Sphinx documentation builder.
 #
 # For the full list of built-in configuration values, see the documentation:
@@ -7,14 +11,18 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'slurmthat'
-copyright = '2026, Emma Davis, Maurice Abraham, ALejandro Martinez, Taylor Juchau'
-author = 'Emma Davis, Maurice Abraham, ALejandro Martinez, Taylor Juchau'
+copyright = '2026, Emma Davis, Maurice Abraham, Alejandro Martinez, Taylor Juchau'
+author = 'Emma Davis, Maurice Abraham, Alejandro Martinez, Taylor Juchau'
+root_doc = 'index'
 release = '0.0.1'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = []
+extensions = [
+    'sphinx.ext.autodoc',
+    'sphinx.ext.napoleon'
+]
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
