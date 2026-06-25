@@ -9,7 +9,7 @@ In general, the following workflow is recommended:
 
 Bash:
 
-  pip install slurmthat
+  > pip install slurmthat
   
 Python:
 
