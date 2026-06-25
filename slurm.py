@@ -71,7 +71,7 @@ class job:
           f.write(f'''#SBATCH --time={time}:00:00
 #SBATCH --mem={memory}G
 #SBATCH --cpus-per-task={cpus}
-#SBATCH --nodes={nodes}\n'''
+#SBATCH --nodes={nodes}\n''')
           if conda is not None:
             f.write('source ~/.bashrc\nconda activate Modeling')
           print(f'wrote .sh file to {sh_filename}')
@@ -83,5 +83,4 @@ class job:
 
 
     def run(self):
-      with open(self.filename, 'a') as f:
-        os.system(f'sbatch {self.filename}')
+      os.system(f'sbatch {self.filename}')
