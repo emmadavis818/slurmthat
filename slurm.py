@@ -13,7 +13,7 @@ class job:
         if self.dir is None:
           self.dir = os.getcwd()
         if self.job is None:
-          self.job = 'my_job'
+          self.job = 'my_job_%j'
         self.filename = os.path.join(self.dir, self.job + ".sh")
 
     def write(self, fail=False, start=False, finish=False, out_file=None, 
