@@ -3,18 +3,19 @@ import os
 class job:
 
     def __init__(self, HPC=None, email=None, dir=None, job=None, partition=None,
-                 account=None):
+                 account=None,shfilename=None):
         self.HPC = HPC
         self.account = account
         self.email = email
         self.dir = dir
         self.job = job
+        if self.job is None:
+          self.job = 'my_job_%j'
         self.partition = partition
         if self.dir is None:
           self.dir = os.getcwd()
-        if self.job is None:
-          self.job = 'my_job_%j'
-        self.filename = os.path.join(self.dir, self.job + ".sh")
+        self.shfilename = shfilename
+        self.filename = os.path.join(self.dir, self.shfilename + ".sh")
 
     def write(self, fail=False, start=False, finish=False, out_file=None, 
               err_file=None, time=32, cpus=10, nodes=1, memory=48, conda=None):
@@ -36,9 +37,8 @@ class job:
       Returns:
           str: The name of the .sh file written.
       '''
-      sh_filename = self.filename
 
-      with open(sh_filename, 'w') as f:
+      with open(self.filename, 'w') as f:
           f.write('#!/bin/bash\n')
           if self.account is not None:
             f.write(f'#SBATCH --account={self.account}\n')
@@ -63,10 +63,10 @@ class job:
           elif finish:
             f.write('#SBATCH --mail-type=END\n')
           if out_file is None:
-            out_file = f"{sh_filename.split('.sh')[0]}.out"
+            out_file = f"{self.filename.split('.sh')[0]}.out"
           f.write(f'#SBATCH --output={out_file}\n')
           if err_file is None:
-            err_file = f"{sh_filename.split('.sh')[0]}.err"
+            err_file = f"{self.filename.split('.sh')[0]}.err"
           f.write(f'#SBATCH --error={err_file}\n')
           f.write(f'''#SBATCH --time={time}:00:00
 #SBATCH --mem={memory}G
@@ -74,8 +74,8 @@ class job:
 #SBATCH --nodes={nodes}\n''')
           if conda is not None:
             f.write('source ~/.bashrc\nconda activate Modeling')
-          print(f'wrote .sh file to {sh_filename}')
-          return sh_filename
+          print(f'wrote .sh file to {self.filename}')
+          return self.filename
     def add_line(self, line):
       with open(self.filename, 'a') as f:
           f.write(f'{line}\n')
