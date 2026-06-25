@@ -14,6 +14,8 @@ class job:
         self.partition = partition
         if self.dir is None:
           self.dir = os.getcwd()
+        if shfilename is None:
+          shfilename = 'my_script'
         self.shfilename = shfilename
         self.filename = os.path.join(self.dir, self.shfilename + ".sh")
 
