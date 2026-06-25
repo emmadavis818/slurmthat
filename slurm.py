@@ -12,6 +12,8 @@ class job:
         self.partition = partition
         if self.dir is None:
           self.dir = os.getcwd()
+        if self.job is None:
+          self.job = 'my_job'
         self.filename = os.path.join(self.dir, self.job + ".sh")
 
     def write(self, fail=False, start=False, finish=False, out_file=None, 
@@ -61,13 +63,12 @@ class job:
           elif finish:
             f.write('#SBATCH --mail-type=END\n')
           if out_file is None:
-            out_file = f'{sh_filename.split('.sh')[0]}.out'
+            out_file = f"{sh_filename.split('.sh')[0]}.out"
           f.write(f'#SBATCH --output={out_file}\n')
           if err_file is None:
-            err_file = f'{sh_filename.split('.sh')[0]}.err'
+            err_file = f"{sh_filename.split('.sh')[0]}.err"
           f.write(f'#SBATCH --error={err_file}\n')
-          f.write(f'''
-#SBATCH --time={time}:00:00
+          f.write(f'''#SBATCH --time={time}:00:00
 #SBATCH --mem={memory}G
 #SBATCH --cpus-per-task={cpus}
 #SBATCH --nodes={nodes}\n
