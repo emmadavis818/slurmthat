@@ -93,7 +93,7 @@ class job:
 #SBATCH --cpus-per-task={cpus}
 #SBATCH --nodes={nodes}\n''')
           if conda is not None:
-            f.write('source ~/.bashrc\nconda activate Modeling')
+            f.write('source ~/.bashrc\nconda activate Modeling\n')
           print(f'wrote .sh file to {self.filename}')
           return self.filename
     def add_line(self, line):
