@@ -17,7 +17,7 @@ class job:
         self.filename = os.path.join(self.dir, self.job + ".sh")
 
     def write(self, fail=False, start=False, finish=False, out_file=None, 
-              err_file=None, time=32, cpus=10, nodes=1, memory=48):
+              err_file=None, time=32, cpus=10, nodes=1, memory=48, conda=None):
       '''Write
       
       Write a .sh file for slurm submission.
@@ -71,8 +71,9 @@ class job:
           f.write(f'''#SBATCH --time={time}:00:00
 #SBATCH --mem={memory}G
 #SBATCH --cpus-per-task={cpus}
-#SBATCH --nodes={nodes}\n
-''')
+#SBATCH --nodes={nodes}\n'''
+          if conda is not None:
+            f.write('source ~/.bashrc\nconda activate Modeling')
           print(f'wrote .sh file to {sh_filename}')
           return sh_filename
     def add_line(self, line):
@@ -81,9 +82,6 @@ class job:
 
 
 
-    def run(self, conda=None):
-      if conda is not None:
-        with open(self.filename, 'a') as f:
-          f.write('source ~/.bashrc\n')
-          f.write(f'conda activate {conda}\n')
-      os.system(f'sbatch {self.filename}')
+    def run(self):
+      with open(self.filename, 'a') as f:
+        os.system(f'sbatch {self.filename}')
