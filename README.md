@@ -13,17 +13,17 @@ Bash:
   
 Python:
 
-  from slurm import job as j
+  > from slurm import job as j
   
-  job = j(account=<your_HPC_account>, email = <your_email>, job=<your_job_name>)
+  > job = j(account=<your_HPC_account>, email = <your_email>, job=<your_job_name>)
   
-  job.write(fail=True, start=True, finish=True, out_file=</path/to/job.out>, err_file=</path/to/job.err>)
+  > job.write(fail=True, start=True, finish=True, out_file=</path/to/job.out>, err_file=</path/to/job.err>)
   
-  job.add_line("print('hello world!')")
+  > job.add_line("print('hello world!')")
   
-  job.add_line("python your.py")
+  > job.add_line("python your.py")
   
-  job.run(conda='<your_conda_environment>')
+  > job.run(conda='<your_conda_environment>')
 
 
 #Example of a bash script to launch a job
