@@ -5,6 +5,18 @@ Group 21, CodeAstro 2026
 
 This package creates and submits an sbatch .sh file on a user-inputed computer/computing system. 
 
+In general, the following workflow is recommended:
+Bash:
+  pip install slurmthat
+Python:
+  from slurm import job as j
+  job = j(account=<your_HPC_account>, email = <your_email>, job=<your_job_name>)
+  job.write(fail=True, start=True, finish=True, out_file=</path/to/job.out>, err_file=</path/to/job.err>)
+  job.add_line("print('hello world!')")
+  job.add_line("python your.py")
+  job.run(conda='<your_conda_environment>')
+
+
 #Example of a bash script to launch a job
 
 #!/bin/bash
