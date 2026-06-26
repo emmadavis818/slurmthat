@@ -15,13 +15,13 @@ Barebones Python:
 
   > from slurmthat.slurmthat import job as j
   
-  > job = j(account='galaxies', email = 'tjuchau@uwyo.edu')
+  > job = j(account='<your_HPC_account>', email = '<your_email>')
   
   > job.write()
   
   > job.add_line(f"echo 'Hello World!'")
   
-  > job.add_line('python testing_slurmthat.py 0.1')
+  > job.add_line('python <your_python_file.py>')
   
   > job.run()
 
