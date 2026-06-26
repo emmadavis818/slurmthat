@@ -1,8 +1,7 @@
-from slurm import job as slurmthat
-
+from slurmthat import job as j
 def test_write():
     # initialize
-    slurmy = slurmthat()
+    slurmy = j()
     slurmy.write()
 
 if __name__ == "__main__":

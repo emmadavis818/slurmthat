@@ -13,7 +13,7 @@ Bash:
   
 Python:
 
-  > from slurm import job as j
+  > from slurmthat import job as j
 
   > job = j(account=<your_HPC_account>, email = <your_email>, job=<your_job_name>)
   
