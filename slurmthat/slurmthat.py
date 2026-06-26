@@ -1,23 +1,21 @@
 import os
 
 class job:
-    '''Write
+    '''Job
       
-      Write a .sh file for slurm submission.
-        
-      Args:
-          fail(bool): Boolean. If True, sends email on job failure.
-          start(bool): Boolean. If True, sends email when job starts.
-          finish(bool): Boolean. If True, sends email when job finishes.
-          out_file(str): String. Name of the output file. 
-          err_file(str): String. Name of the error file. 
-          time(int): Integer. Time (in hours) requested for the job. Default is 32 hours.
-          cpus(int): Integer. Number of CPUs requested for the job. Default is 10.
+    Class for creating a job submission script for SLURM.     
+
+      Attributes:
+          HPC (str): String. Name of the HPC system.
+          email (str): String. Email address for job notifications.
+          dir (str): String. Directory for the job script.
+          job (str): String. Name of the job.
+          partition (str): String. Partition for the job.
+          account (str): String. Account for the job.
+          shfilename (str): String. Name of the shell script file.
           nodes(int): Integer. Number of nodes requested for the job. Default is 1.
           memory(int): Integer. Amount of memory (in GB) requested for the job. Default is 48 GB.
       
-      Returns:
-          str: The name of the .sh file written.
       '''
 
     def __init__(self, HPC=None, email=None, dir=None, job=None, partition=None,
@@ -97,10 +95,29 @@ class job:
           print(f'wrote .sh file to {self.filename}')
           return self.filename
     def add_line(self, line):
+      '''Add line
+
+      Add a line to the .sh file.
+
+      Args:
+          line(str): String. Line to add to the .sh file.
+
+      Returns:
+          None
+      '''
       with open(self.filename, 'a') as f:
           f.write(f'{line}\n')
 
 
 
     def run(self):
+      '''Run
+
+      Run the job submission script using sbatch.
+
+      Args:
+          None
+      Returns:
+          None
+      '''
       os.system(f'sbatch {self.filename}')

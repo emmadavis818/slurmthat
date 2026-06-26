@@ -11,19 +11,34 @@ Bash:
 
   > pip install slurmthat
   
-Python:
+Barebones Python:
 
-  > from slurmthat import job as j
+  > from slurmthat.slurmthat import job as j
+  
+  > job = j(account='galaxies', email = 'tjuchau@uwyo.edu')
+  
+  > job.write()
+  
+  > job.add_line(f"echo 'Hello World!'")
+  
+  > job.add_line('python testing_slurmthat.py 0.1')
+  
+  > job.run()
 
-  > job = j(account=<your_HPC_account>, email = <your_email>, job=<your_job_name>)
+More specific Python example:
+
+  > from slurmthat.slurmthat import job as j
+
+  > job = j(account='<your_HPC_account>', email = '<your_email>', job='<your_job_name>', shfilename='</path/to/job>') #will add the .sh automatically
   
-  > job.write(fail=True, start=True, finish=True, out_file=</path/to/job.out>, err_file=</path/to/job.err>)
+  > job.write(fail=True, start=True, finish=True, out_file='</path/to/job.out>',
+  > err_file='</path/to/job.err>', conda='<your_conda_environment>') #all of these arguments are optional, defaults can be shown by running job.write?
   
-  > job.add_line("print('hello world!')")
+  > job.add_line("echo 'hello world!'")
   
   > job.add_line("python your.py")
   
-  > job.run(conda='<your_conda_environment>')
+  > job.run()
 
 
 #Example of a bash script to launch a job

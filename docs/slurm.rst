@@ -1,9 +1,7 @@
 .. _slurm:
 
-#Title
+slurm
 =====================
 
-#Aim.
-
-.. autoclass:: slurm
+.. automodule:: slurmthat
    :members:
