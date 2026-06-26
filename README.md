@@ -15,7 +15,7 @@ Python:
 
   > from slurmthat.slurmthat import job as j
 
-  > job = j(account=<your_HPC_account>, email = <your_email>, job=<your_job_name>)
+  > job = j(account=<your_HPC_account>, email = <your_email>, job=<your_job_name>, shfilename=</path/to/job>) #will add the .sh automatically
   
   > job.write(fail=True, start=True, finish=True, out_file=</path/to/job.out>,
   > err_file=</path/to/job.err>, conda='<your_conda_environment>')
