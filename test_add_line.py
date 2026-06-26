@@ -1,8 +1,8 @@
-from slurm import job as slurmthat
+from slurmthat import job as j
 
 def test_add_line():
     # initialize
-    slurmy = slurmthat()
+    slurmy = j()
     slurmy.write()
     slurmy.add_line('\nmodule load python3')
 
