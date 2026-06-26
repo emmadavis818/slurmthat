@@ -11,7 +11,21 @@ Bash:
 
   > pip install slurmthat
   
-Python:
+Barebones Python:
+
+  > from slurmthat.slurmthat import job as j
+  
+  > job = j(account='galaxies', email = 'tjuchau@uwyo.edu')
+  
+  > job.write()
+  
+  > job.add_line(f"echo 'Hello World!'")
+  
+  > job.add_line('python testing_slurmthat.py 0.1')
+  
+  > job.run()
+
+More specific Python example:
 
   > from slurmthat.slurmthat import job as j
 
