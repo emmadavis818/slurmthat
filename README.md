@@ -20,7 +20,7 @@ Python:
   > job.write(fail=True, start=True, finish=True, out_file=</path/to/job.out>,
   > err_file=</path/to/job.err>, conda='<your_conda_environment>')
   
-  > job.add_line("print('hello world!')")
+  > job.add_line("echo 'hello world!'")
   
   > job.add_line("python your.py")
   
