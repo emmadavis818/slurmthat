@@ -15,10 +15,10 @@ Python:
 
   > from slurmthat.slurmthat import job as j
 
-  > job = j(account=<your_HPC_account>, email = <your_email>, job=<your_job_name>, shfilename=</path/to/job>) #will add the .sh automatically
+  > job = j(account='<your_HPC_account>', email = '<your_email>', job='<your_job_name>', shfilename='</path/to/job>') #will add the .sh automatically
   
-  > job.write(fail=True, start=True, finish=True, out_file=</path/to/job.out>,
-  > err_file=</path/to/job.err>, conda='<your_conda_environment>') #all of these arguments are optional, defaults can be shown by running job.write?
+  > job.write(fail=True, start=True, finish=True, out_file='</path/to/job.out>',
+  > err_file='</path/to/job.err>', conda='<your_conda_environment>') #all of these arguments are optional, defaults can be shown by running job.write?
   
   > job.add_line("echo 'hello world!'")
   
